@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource prefix="/">
+    <file>Qml/Main.qml</file>
+    <file>Qml/Footer.qml</file>
+  </qresource>
+  <qresource></qresource>
+</RCC>
