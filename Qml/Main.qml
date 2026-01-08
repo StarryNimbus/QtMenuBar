@@ -10,26 +10,6 @@ Rectangle {
     height: 600
     color: isDarkMode ? "#3D3D3D" : "#F5F5F7"
 
-    ListModel {
-        id: infotainmentModel
-        ListElement {
-            name: "Home"
-            icon: ""
-        }
-        ListElement {
-            name: "Media"
-            icon: ""
-        }
-        ListElement {
-            name: "Navigation"
-            icon: ""
-        }
-        ListElement {
-            name: "My Car"
-            icon: ""
-        }
-    }
-
     Footer {
         id: footer
         anchors {
@@ -39,7 +19,5 @@ Rectangle {
 
         height: 80
         width: parent.width
-
-        model: infotainmentModel
     }
 }

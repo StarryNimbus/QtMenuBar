@@ -10,7 +10,8 @@ MainWindow::MainWindow(bool isDarkMode)
   // Context properties must be set before setSource()
   m_view->rootContext()->setContextProperty("isDarkMode", m_isDarkMode);
 
-  m_view->setSource(QUrl("qrc:///Qml/Main.qml"));
+  // m_view->setSource(QUrl("qrc:///Qml/Main.qml"));
+  m_view->loadFromModule("com.qtmenubar", "Main");
   m_view->setGeometry(0, 0, 1000, 600);
 }
 

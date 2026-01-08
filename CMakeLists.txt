@@ -21,4 +21,24 @@ add_executable(QtMenuBar
     MainWindow.h
 )
 
+set(QML_DIR "Qml/")
+
+# Order matters here, the target must exist before attaching a QML module to it.
+set(plain_qml_files
+    ${QML_DIR}Main.qml
+    ${QML_DIR}Footer.qml
+)
+set(qml_singletons
+    ${QML_DIR}InfotainmentModel.qml
+)
+set_source_files_properties(${qml_singletons}
+    PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+qt_add_qml_module(QtMenuBar
+    URI com.qtmenubar
+    VERSION 1.0
+    QML_FILES
+        ${plain_qml_files}
+        ${qml_singletons}
+)
+
 target_link_libraries(QtMenuBar PRIVATE Qt6::Core Qt6::Gui Qt6::Quick Qt6::Widgets)

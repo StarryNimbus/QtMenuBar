@@ -1,11 +1,10 @@
 import QtQuick
 import QtQuick.Controls
 import QtQml.Models
+import com.qtmenubar 1.0
 
 Rectangle {
     id: root
-
-    property var model: null
 
     color: "black"
 
@@ -36,14 +35,13 @@ Rectangle {
 
         Repeater {
             id: tabButtonRepeater
-            model: infotainmentModel
+            model: InfotainmentModel.model
             TabButton {
                 id: tabButton
                 property bool isSelected: TabBar.index == tabBar.currentIndex
 
                 height: 80
-                width: (tabBar.width / 2) / infotainmentModel.count
-                // width: 125
+                width: (tabBar.width / 2) / InfotainmentModel.model.count
 
                 contentItem: Label {
                     anchors {
