@@ -9,24 +9,46 @@ Rectangle {
 
     color: "black"
 
-    Image {
-        id: menuImage
+    Rectangle {
+        id: menuButtonHitBox
         anchors {
             left: parent.left
             leftMargin: 25
             verticalCenter: root.verticalCenter
         }
 
-        source: "qrc:/images/menu.svg"
-        sourceSize.width: 24
-        sourceSize.height: 24
-        fillMode: Image.PreserveAspectFit
+        width: {
+            let val = 40;
+            if (menuButtonMouseArea.containsMouse) {
+                val = val * 1.1;
+            } else if (menuButtonMouseArea.pressed) {
+                val = val * 1.1;
+            }
+            return val;
+        }
+        height: width
+        radius: width / 2
+        color: (menuButtonMouseArea.containsMouse || menuButtonMouseArea.pressed) ? "#BF3b3b3b" : "transparent"
+
+        Image {
+            id: menuImage
+            anchors {
+                horizontalCenter: menuButtonHitBox.horizontalCenter
+                verticalCenter: menuButtonHitBox.verticalCenter
+            }
+
+            source: "qrc:/images/menu.svg"
+            sourceSize.width: 24
+            sourceSize.height: 24
+            fillMode: Image.PreserveAspectFit
+        }
 
         MouseArea {
-            id: menuImageMouseArea
+            id: menuButtonMouseArea
             anchors {
                 fill: parent
             }
+            hoverEnabled: true
             onClicked: {
                 console.log("Menu button clicked");
             }
@@ -36,8 +58,8 @@ Rectangle {
     TabBar {
         id: tabBar
         anchors {
-            left: menuImage.left
-            leftMargin: 25
+            left: menuButtonHitBox.left
+            leftMargin: 40
             bottom: parent.bottom
         }
 
@@ -64,7 +86,7 @@ Rectangle {
             model: InfotainmentModel.model
             TabButton {
                 id: tabButton
-                property bool isSelected: TabBar.index == tabBar.currentIndex
+                property bool isSelected: index == tabBar.currentIndex
 
                 height: 80
                 width: (tabBar.width / 2) / InfotainmentModel.model.count
@@ -117,6 +139,7 @@ Rectangle {
                         fill: parent
                     }
                     onClicked: {
+                        tabBar.currentIndex = index;
                         console.log(model.name + " tab button clicked");
                     }
                 }
