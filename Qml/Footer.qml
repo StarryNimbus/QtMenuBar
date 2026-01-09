@@ -110,6 +110,16 @@ Rectangle {
                         visible: isSelected
                     }
                 }
+
+                MouseArea {
+                    id: tabButtonMouseArea
+                    anchors {
+                        fill: parent
+                    }
+                    onClicked: {
+                        console.log(model.name + " tab button clicked");
+                    }
+                }
             }
         }
     }
