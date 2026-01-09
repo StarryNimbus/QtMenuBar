@@ -14,14 +14,16 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Widgets)
 
-add_executable(QtMenuBar
-    resources.qrc
-    main.cpp
-    MainWindow.cpp
-    MainWindow.h
-)
+set(QML_DIR "qml/")
+set(SRC_DIR "src/")
+set(RESOURCES_DIR "resources/")
 
-set(QML_DIR "Qml/")
+add_executable(QtMenuBar
+    ${RESOURCES_DIR}resources.qrc
+    ${SRC_DIR}main.cpp
+    ${SRC_DIR}MainWindow.cpp
+    ${SRC_DIR}MainWindow.h
+)
 
 # Order matters here, the target must exist before attaching a QML module to it.
 set(plain_qml_files

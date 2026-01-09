@@ -65,9 +65,9 @@ Rectangle {
 
         // width/height define the actual on-screen size assigned to the TabBar by its parent.
         // contentWidth/contentHeight represent the natural size required by the tabs themselves
-        // (sum of each TabButton’s implicit size + spacing).
+        // (sum of each TabButton's implicit size + spacing).
         //
-        // If width/height are NOT set, TabBar’s implicit size is derived from contentWidth/Height.
+        // If width/height are NOT set, TabBar's implicit size is derived from contentWidth/Height.
         // If width/height ARE set, the content may be stretched, clipped, or scrolled to fit.
         //
         // Rule of thumb:
