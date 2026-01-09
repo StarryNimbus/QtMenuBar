@@ -9,10 +9,35 @@ Rectangle {
 
     color: "black"
 
+    Image {
+        id: menuImage
+        anchors {
+            left: parent.left
+            leftMargin: 25
+            verticalCenter: root.verticalCenter
+        }
+
+        source: "qrc:/images/menu.svg"
+        sourceSize.width: 24
+        sourceSize.height: 24
+        fillMode: Image.PreserveAspectFit
+
+        MouseArea {
+            id: menuImageMouseArea
+            anchors {
+                fill: parent
+            }
+            onClicked: {
+                console.log("Menu button clicked");
+            }
+        }
+    }
+
     TabBar {
         id: tabBar
         anchors {
-            left: parent.left
+            left: menuImage.left
+            leftMargin: 25
             bottom: parent.bottom
         }
 
