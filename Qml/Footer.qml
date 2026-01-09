@@ -5,6 +5,7 @@ import com.qtmenubar 1.0
 
 Rectangle {
     id: root
+    property alias currentIndex: tabBar.currentIndex
 
     color: "black"
 
@@ -44,6 +45,7 @@ Rectangle {
                 width: (tabBar.width / 2) / InfotainmentModel.model.count
 
                 contentItem: Label {
+                    id: tabButtonLabel
                     anchors {
                         centerIn: parent
                     }
@@ -63,10 +65,24 @@ Rectangle {
                 }
 
                 background: Rectangle {
-                    id: squareRect
+                    id: background
                     color: "transparent"
                     anchors {
                         fill: parent
+                    }
+
+                    Rectangle {
+                        id: underline
+                        anchors {
+                            bottom: background.bottom
+                            bottomMargin: tabButtonLabel.lineCount > 1 ? 10 : 20
+                            horizontalCenter: background.horizontalCenter
+                        }
+
+                        height: 2
+                        width: tabButton.width / 3
+                        color: "white"
+                        visible: isSelected
                     }
                 }
             }
