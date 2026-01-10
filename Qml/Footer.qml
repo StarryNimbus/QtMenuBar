@@ -9,57 +9,20 @@ Rectangle {
 
     color: "black"
 
-    Rectangle {
-        id: menuButtonHitBox
+    MenuButton {
+        id: menuButton
         anchors {
             left: parent.left
             leftMargin: 25
             verticalCenter: root.verticalCenter
-        }
-
-        width: {
-            let val = 40;
-            if (menuButtonMouseArea.containsMouse) {
-                val = val * 1.1;
-            } else if (menuButtonMouseArea.pressed) {
-                val = val * 1.1;
-            }
-            return val;
-        }
-        height: width
-        radius: width / 2
-        color: (menuButtonMouseArea.containsMouse || menuButtonMouseArea.pressed) ? "#BF3b3b3b" : "transparent"
-
-        Image {
-            id: menuImage
-            anchors {
-                horizontalCenter: menuButtonHitBox.horizontalCenter
-                verticalCenter: menuButtonHitBox.verticalCenter
-            }
-
-            source: "qrc:/images/menu.svg"
-            sourceSize.width: 24
-            sourceSize.height: 24
-            fillMode: Image.PreserveAspectFit
-        }
-
-        MouseArea {
-            id: menuButtonMouseArea
-            anchors {
-                fill: parent
-            }
-            hoverEnabled: true
-            onClicked: {
-                console.log("Menu button clicked");
-            }
         }
     }
 
     TabBar {
         id: tabBar
         anchors {
-            left: menuButtonHitBox.left
-            leftMargin: 40
+            left: menuButton.right
+            leftMargin: 15
             bottom: parent.bottom
         }
 
@@ -78,6 +41,11 @@ Rectangle {
         contentWidth: parent.width
         contentHeight: 80
         spacing: 0
+
+        // Adding a background to the TabBar to prevent the default background from being shown.
+        background: Rectangle {
+            color: "transparent"
+        }
 
         currentIndex: 0
 
@@ -101,7 +69,7 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
 
-                    color: tabButton.isSelected ? "white" : "white" // TODO
+                    color: "white"
                     font.pixelSize: 15 * (isSelected ? 1.2 : 1)
                     font.weight: isSelected ? Font.ExtraBold : Font.Normal
 
