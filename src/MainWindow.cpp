@@ -1,6 +1,8 @@
 #include "MainWindow.h"
 #include <QQmlContext>
 #include <QQmlEngine>
+#include <QSize>
+#include <QSizePolicy>
 #include <Qt>
 
 MainWindow::MainWindow(bool isDarkMode)
@@ -11,7 +13,11 @@ MainWindow::MainWindow(bool isDarkMode)
   m_view->rootContext()->setContextProperty("isDarkMode", m_isDarkMode);
 
   m_view->loadFromModule("com.qtmenubar", "Main");
-  m_view->setGeometry(0, 0, 1000, 600);
+  m_view->setGeometry(0, 0, 1000, 600); // default size when launched
+
+  // Allow width to expand but set the minimum and maximum height to 600.
+  m_view->setMinimumSize(QSize(600, 600));
+  m_view->setMaximumHeight(600);
 }
 
 void MainWindow::show() const { m_view->show(); }
