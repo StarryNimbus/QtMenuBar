@@ -27,9 +27,10 @@ add_executable(QtMenuBar
 
 # Order matters here, the target must exist before attaching a QML module to it.
 set(plain_qml_files
-    ${QML_DIR}MenuButton.qml
-    ${QML_DIR}Main.qml
     ${QML_DIR}Footer.qml
+    ${QML_DIR}Main.qml
+    ${QML_DIR}MenuButton.qml
+    ${QML_DIR}Navigation.qml
 )
 set(qml_singletons
     ${QML_DIR}InfotainmentModel.qml
