@@ -12,7 +12,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC OFF) # currently not using .ui files
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Location Positioning Quick Widgets)
 
 set(QML_DIR "qml/")
 set(SRC_DIR "src/")
@@ -44,4 +44,4 @@ qt_add_qml_module(QtMenuBar
         ${qml_singletons}
 )
 
-target_link_libraries(QtMenuBar PRIVATE Qt6::Core Qt6::Gui Qt6::Quick Qt6::Widgets)
+target_link_libraries(QtMenuBar PRIVATE Qt6::Core Qt6::Gui Qt6::Location Qt6::Positioning Qt6::Quick Qt6::Widgets)
