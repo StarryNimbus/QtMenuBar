@@ -59,7 +59,7 @@ Rectangle {
         map {
             // center: QtPositioning.coordinate(59.9139, 10.7522) // Example: Oslo coordinates]
             center: QtPositioning.coordinate(37.7749, -122.4194) // San Francisco
-            zoomLevel: 8.0 // default zoom level
+            zoomLevel: 12.0 // 8.0 is the default zoom level
             plugin: osmPlugin
         }
     }
@@ -67,15 +67,26 @@ Rectangle {
     GeocodeModel {
         id: geocodeModel
         plugin: view.map.plugin
+        // Set a query to populate the model with locations
+        // This performs forward geocoding (address to coordinates)
+        query: "San Francisco, CA"
+        autoUpdate: false // Set to true if you want automatic updates
+
         onStatusChanged: {
             if ((status == GeocodeModel.Ready) || (status == GeocodeModel.Error))
                 view.geocodeFinished();
         }
         onLocationsChanged: {
+            console.log("GeocodeModel found", count, "locations");
             if (count === 1) {
                 view.map.center.latitude = get(0).coordinate.latitude;
                 view.map.center.longitude = get(0).coordinate.longitude;
             }
+        }
+
+        // Update the model when component loads
+        Component.onCompleted: {
+            update();
         }
     }
 
@@ -91,12 +102,19 @@ Rectangle {
         MapQuickItem {
             id: point
             parent: view.map
+            // The data stored and returned in the GeocodeModel consists of
+            // Location objects, as a list with the role name "locationData".
+            // See the documentation for Location for further details on its
+            // structure and contents.
             coordinate: locationData.coordinate
 
-            // sourceItem: Image {
-            //     id: pointMarker
-            //     source: "../resources/marker_blue.png"
-            // }
+            sourceItem: Image {
+                id: pointMarker
+                source: "qrc:/images/locationMarker.svg"
+                sourceSize.width: 24
+                sourceSize.height: 24
+                fillMode: Image.PreserveAspectFit
+            }
         }
     }
 }

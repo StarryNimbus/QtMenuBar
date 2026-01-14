@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource prefix="/">
+    <file>images/locationMarker.svg</file>
     <file>images/menu.svg</file>
   </qresource>
 </RCC>
