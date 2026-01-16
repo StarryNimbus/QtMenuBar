@@ -5,7 +5,8 @@ import com.qtmenubar 1.0
 
 Rectangle {
     id: root
-    property alias currentIndex: tabBar.currentIndex
+    property int currentIndex: tabBar.currentIndex
+    property string currentString: InfotainmentModel.model.get(currentIndex).name
 
     color: "black"
 
