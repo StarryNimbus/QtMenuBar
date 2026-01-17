@@ -2,12 +2,16 @@
 A **Qt6 QML "Menu Bar" application** which demonstrates how to render a custom
 menu bar using Qt Quick and a ListModel. It can be used as a reusable UI module.
 
-This is not a full feature showcase but rather a foundation for a potential Car Infotainment system side project.
+This project is not intended to be a full-featured application. Instead, it
+provides a solid foundation for a potential car infotainment system side
+project, focusing on structure, layout, and extensibility.
 
-The application has 4 tabs; home, media, navigation, and "my car". Although
-these tabs don't facilitate useful interactions, I used the OpenStreetMap (OSM)
-plugin, Location, and Positioning libraries for the first time. It was
-surprisingly easy to set up and the QT tutorials and documentations helped.
+The application includes four tabs: **Home**, **Media**, **Navigation**, and
+**My Car**. While these tabs do not yet provide advanced functionality, the
+project served as an opportunity to explore the Qt Location, Qt Positioning, and
+OpenStreetMap (OSM) plugins for the first time. Integrating these technologies
+was straightforward, and the official Qt tutorials and documentation proved to
+be clear and effective.
 
 ---
 
