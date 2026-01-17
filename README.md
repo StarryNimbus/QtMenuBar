@@ -1,6 +1,9 @@
 # QtMenuBar
 A **Qt6 QML "Menu Bar" application** which demonstrates how to render a custom
-menu bar using Qt Quick and a ListModel. It can be used as a reusable UI module.
+menu bar using Qt Quick and a ListModel. It can be used as a reusable UI module
+within this project. Note that the menu bar (Footer.qml) is built around a
+fixed, example-specific model. It is intended as a reference implementation
+although it can be adapted to take in drop-in reusable components.
 
 This project is not intended to be a full-featured application. Instead, it
 provides a solid foundation for a potential car infotainment system side
